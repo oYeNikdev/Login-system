@@ -1,4 +1,4 @@
-html {
+/* html {
   height: 100%;
 }
 
@@ -78,4 +78,190 @@ body {
   background-color: #3a3a3a;
   cursor: pointer;
   outline: none;
+} */
+ :root {
+  --bg: #3a3a3a;
+  --card: #ffffff;
+  --ink: #3a3a3a;
+  --ink-dark: #1f1f1f;
+  --focus: #1a73e8;
+  --error: #8a0000;
+  --error-bg: #f8d7d7;
+  --ok: #14532d;
+  --ok-bg: #d4edda;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 16px;
+  display: grid;
+  place-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+}
+
+#main-holder {
+  width: min(100%, 380px);
+  padding: 32px 28px;
+  display: grid;
+  gap: 16px;
+  background-color: var(--card);
+  border-radius: 7px;
+  box-shadow: 0 0 5px 2px #000;
+}
+
+#login-header {
+  margin: 0;
+  text-align: center;
+  color: var(--ink);
+}
+
+/* Message box: always takes up space, so the card doesn't jump when it appears */
+#login-error-msg {
+  margin: 0;
+  min-height: 3em;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--error);
+  border: 1px solid var(--error);
+  border-radius: 4px;
+  background-color: var(--error-bg);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+#login-error-msg.show {
+  opacity: 1;
+}
+
+#login-error-msg.success {
+  color: var(--ok);
+  border-color: var(--ok);
+  background-color: var(--ok-bg);
+}
+
+#login-form {
+  display: grid;
+  gap: 14px;
+}
+
+.login-form-field {
+  width: 100%;
+  padding: 8px 4px;
+  font-size: 15px;
+  color: var(--ink);
+  border: none;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 3px 3px 0 0;
+  outline: none;
+  background: transparent;
+}
+
+.login-form-field::placeholder {
+  color: #6b6b6b;
+}
+
+.login-form-field:focus {
+  border-bottom: 2px solid var(--focus);
+  background-color: #f4f4f4;
+}
+
+.login-form-field.invalid {
+  border-bottom-color: var(--error);
+}
+
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap .login-form-field {
+  padding-right: 56px;
+}
+
+#toggle-password {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--ink);
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+#toggle-password:hover {
+  text-decoration: underline;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+#login-form-submit {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--ink);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#login-form-submit:hover:not(:disabled) {
+  background-color: var(--ink-dark);
+}
+
+#login-form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#login-form-submit:focus-visible,
+#toggle-password:focus-visible,
+.remember input:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Visually hidden, but still read by screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }

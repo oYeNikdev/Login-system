@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,4 +29,43 @@
 </body>
 
 
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- defer = run the script after the HTML is loaded, so getElementById works -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main id="main-holder">
+        <h1 id="login-header">Login</h1>
+
+        <p id="login-error-msg" role="alert"></p>
+
+        <form id="login-form" novalidate>
+            <label class="sr-only" for="username">Username</label>
+            <input type="text" name="username" id="username" class="login-form-field"
+                   placeholder="Username" autocomplete="username" autofocus>
+
+            <div class="password-wrap">
+                <label class="sr-only" for="password">Password</label>
+                <input type="password" name="password" id="password" class="login-form-field"
+                       placeholder="Password" autocomplete="current-password">
+                <button type="button" id="toggle-password" aria-label="Show password" aria-pressed="false">Show</button>
+            </div>
+
+            <label class="remember">
+                <input type="checkbox" id="remember-me"> Remember me
+            </label>
+
+            <button type="submit" id="login-form-submit">Login</button>
+        </form>
+    </main>
+</body>
 </html>
